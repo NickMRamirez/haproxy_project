@@ -22,6 +22,7 @@ Vagrant.configure(2) do |config|
     
     server.vm.provision 'chef_zero' do |chef|
       chef.roles_path = 'roles'
+	  chef.nodes_path = 'nodes'
       chef.add_role 'dockerhost'
       chef.json = {
         'web' => {
