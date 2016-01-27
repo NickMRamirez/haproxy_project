@@ -35,12 +35,20 @@ Vagrant.configure(2) do |config|
       1.upto(servers_number) do |num|
         docker.run "web#{num}", 
           image: 'nginx',
-          args: "-v /vagrant/nginx/nginx.conf:/etc/nginx/nginx.conf -v /tmp/index#{num}.html:/usr/share/nginx/html/index.html --net private_nw"
+          args: "-v /vagrant:/vagrant -v /vagrant/nginx/nginx.conf:/etc/nginx/nginx.conf -v /tmp/index#{num}.html:/usr/share/nginx/html/index.html --net private_nw"
       end
+	  
+	  # docker.run 'sinatra1',
+	    # image: 'erikap/ruby-sinatra',
+		# args: "-v /vagrant/sinatra:/usr/src/app -e MAIN_APP_FILE=web.rb --net private_nw"
+		
+	  # docker.run 'sinatra2',
+	    # image: 'erikap/ruby-sinatra',
+		# args: "-v /vagrant/sinatra:/usr/src/app -e MAIN_APP_FILE=web.rb --net private_nw"
     
       docker.run "lb1",
         image: 'haproxy',
-        args: '-v /vagrant/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg -p 80:80 --net private_nw'
+        args: '-v /vagrant:/vagrant -v /vagrant/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg -p 80:80 -p 443:443 --net private_nw'
 	end
   end
 

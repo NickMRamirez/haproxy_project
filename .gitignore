@@ -1,3 +1,4 @@
 .vagrant
+nodes/*.json
 
 Berksfile.lock
