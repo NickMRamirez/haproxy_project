@@ -5,7 +5,7 @@
 
 # Change this to change how many NGINX 
 # Web servers are created
-servers_number = 2
+servers_number = 3
 
 # Install required Vagrant plugins...
 required_plugins = %w{ vagrant-berkshelf }
@@ -35,7 +35,7 @@ Vagrant.configure(2) do |config|
       1.upto(servers_number) do |num|
         docker.run "web#{num}", 
           image: 'nginx',
-          args: "-v /vagrant:/vagrant -v /vagrant/nginx/nginx.conf:/etc/nginx/nginx.conf -v /tmp/index#{num}.html:/usr/share/nginx/html/index.html --net private_nw"
+          args: "-v /vagrant:/vagrant -v /vagrant/nginx/nginx.conf:/etc/nginx/nginx.conf -v /tmp/index#{num}.html:/usr/share/nginx/html/index.html -v /vagrant/MyCert.pem:/usr/share/nginx/ssl/MyCert.pem --net private_nw"
       end
 	  
 	  # docker.run 'sinatra1',
