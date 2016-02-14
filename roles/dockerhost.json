@@ -1,8 +1,0 @@
-{
-	"name" : "dockerhost",
-	"description" : "Sets up a host machine for Docker",
-	"run_list" : [
-	  "recipe[dockersetup]", 
-	  "recipe[dockersetup::webpage]"
-	]
-}

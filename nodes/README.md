@@ -1,1 +1,0 @@
-I'm not sure what this folder does, but Vagrant requires it now for Chef-Zero.
