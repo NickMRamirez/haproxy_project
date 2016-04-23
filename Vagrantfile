@@ -44,7 +44,7 @@ Vagrant.configure(2) do |config|
     server.vm.provision 'docker' do |docker|
       docker.run "lb1",
         image: 'haproxy',
-        args: '-v /vagrant/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg -p 80:80 -p 443:443 --net isolated_nw'
+        args: '-v /vagrant/MyCert.pem:/usr/local/etc/haproxy/MyCert.pem -v /vagrant/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg -p 80:80 -p 443:443 --net isolated_nw'
     end
   end
 
