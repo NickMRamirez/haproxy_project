@@ -7,7 +7,7 @@ servers_number = 2
 Vagrant.configure(2) do |config|
 
   config.vm.define 'server1' do |server|
-    server.vm.box = 'boxcutter/centos72-docker'
+    server.vm.box = 'box-cutter/ubuntu1404-docker'
     server.vm.hostname = 'server1'
     server.vm.network 'private_network', ip: '192.168.50.10'
     
